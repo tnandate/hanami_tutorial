@@ -2,7 +2,7 @@ require_relative '../../../spec_helper'
 
 describe Web::Controllers::Books::Create do
   let(:action) { Web::Controllers::Books::Create.new }
-  let(:params) { Hash[book: { title: 'Confident Ruby', author: 'Avdi Grimm'}] }
+  let(:params) { Hash[book: { title: 'Confident Ruby', author: 'Avdi Grimm' }] }
   let(:repository) { BookRepository.new }
 
   before do
@@ -14,7 +14,7 @@ describe Web::Controllers::Books::Create do
     book = repository.last
 
     book.id.wont_be_nil
-    book.title.must_equal.dig(:book, :title)
+    book.title.must_equal params.dig(:book, :title)
   end
 
   it 'redirects the user to the books listing' do
